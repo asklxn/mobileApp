@@ -1,0 +1,58 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1"
+    android:padding="16dp">
+
+    <TableRow>
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/img_company"
+            android:contentDescription="로고 이미지"
+            android:layout_span="2"
+            android:gravity="center"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/editTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="아이디"
+            android:layout_span="2"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="패스워드"
+            android:inputType="textPassword"
+            android:layout_span="2"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"/>
+
+        <Button
+            android:id="@+id/buttonExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종료"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/textViewResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="2"/>
+    </TableRow>
+</TableLayout>
