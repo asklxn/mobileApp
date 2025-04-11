@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- guess.gif를 drawable 폴더에 저장 -->
+    <ImageView
+        android:id="@+id/imageViewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/guess"
+        android:contentDescription="게임 이미지" />
+
+
+    <TextView
+        android:id="@+id/textViewDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guess the same number that the computer has guessed.\nThe number will range from 1 to 100."
+        android:textAlignment="center"
+        android:paddingTop="16dp"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editTextGuess"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Enter your guess"
+        android:layout_marginTop="24dp" />
+
+    <Button
+        android:id="@+id/btnGuess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GUESS"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/textViewHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>
