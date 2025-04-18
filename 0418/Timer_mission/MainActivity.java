@@ -63,17 +63,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showExtendDialog() {
-        new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("타이머 종료")
-                .setMessage("10초를 더 연장하시겠습니까?")
-                .setPositiveButton("연장", (dialog, which) -> {
-                    startTimer(null); // 타이머 다시 시작
-                })
-                .setNegativeButton("종료", (dialog, which) -> {
-                    mEditText.setText("종료되었습니다.");
-                })
-                .setCancelable(false)
-                .show();
+    new androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("타이머 종료")
+            .setMessage("10초를 더 연장하시겠습니까?")
+            .setPositiveButton("연장", (dialog, which) -> {
+                startTimer(null); // 타이머 다시 시작
+            })
+            .setNegativeButton("종료", (dialog, which) -> {
+                finishAffinity(); // 현재 액티비티와 그 부모 액티비티 모두 종료
+                System.exit(0);    // 완전히 앱 프로세스 종료
+            })
+            .setCancelable(false)
+            .show();
     }
 
     public void startTimer(View view) {
