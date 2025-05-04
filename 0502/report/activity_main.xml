@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- ScrollView는 자식이 1개만 가능하므로 하나로 감싼다 -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 설문 화면 -->
+        <LinearLayout
+            android:id="@+id/surveyLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="건강한 생활 습관 설문"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!-- 10개 질문 -->
+            <CheckBox android:id="@+id/q1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="매일 아침 식사를 한다." />
+            <CheckBox android:id="@+id/q2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="일주일에 3번 이상 운동한다." />
+            <CheckBox android:id="@+id/q3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="물을 하루 1리터 이상 마신다." />
+            <CheckBox android:id="@+id/q4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="과일과 채소를 자주 섭취한다." />
+            <CheckBox android:id="@+id/q5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="하루 7시간 이상 잠을 잔다." />
+            <CheckBox android:id="@+id/q6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="야식을 자주 먹지 않는다." />
+            <CheckBox android:id="@+id/q7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="음주를 자제한다." />
+            <CheckBox android:id="@+id/q8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="흡연을 하지 않는다." />
+            <CheckBox android:id="@+id/q9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="스트레스를 적절히 해소한다." />
+            <CheckBox android:id="@+id/q10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="하루에 30분 이상 걷는다." />
+
+            <Button
+                android:id="@+id/submitBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제출"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+
+        <!-- 결과 화면 -->
+        <LinearLayout
+            android:id="@+id/resultLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:paddingTop="32dp">
+
+            <TextView
+                android:id="@+id/resultText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="결과"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:padding="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
