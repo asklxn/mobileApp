@@ -1,64 +1,66 @@
-package com.example.to_do;
+package com.example.todo;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText inputTask;
-    private RecyclerView recyclerView;
-    private TaskAdapter adapter;
-    private ArrayList<String> taskList;
+    EditText editTextTask;
+    TextView textViewDate;
+    Button buttonAdd, buttonPickDate;
+    ListView listView;
+    ArrayList<TodoItem> itemList;
+    TodoAdapter adapter;
+    String selectedDate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inputTask = findViewById(R.id.inputTask);
-        recyclerView = findViewById(R.id.recyclerView);
+        editTextTask = findViewById(R.id.editTextTask);
+        textViewDate = findViewById(R.id.textViewDate);
+        buttonAdd = findViewById(R.id.buttonAdd);
+        buttonPickDate = findViewById(R.id.buttonPickDate);
+        listView = findViewById(R.id.listView);
 
-        taskList = new ArrayList<>();
-        adapter = new TaskAdapter(taskList);
+        itemList = new ArrayList<>();
+        adapter = new TodoAdapter(this, itemList);
+        listView.setAdapter(adapter);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        // 날짜 선택 버튼 클릭
+        buttonPickDate.setOnClickListener(view -> {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // 스와이프 삭제 기능
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView rv, @NonNull RecyclerView.ViewHolder vh, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
+            DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, (view1, y, m, d) -> {
+                selectedDate = y + "-" + (m + 1) + "-" + d;
+                textViewDate.setText(selectedDate);
+            }, year, month, day);
+            dialog.show();
+        });
 
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder vh, int direction) {
-                int position = vh.getAdapterPosition();
-                taskList.remove(position);
-                adapter.notifyItemRemoved(position);
+        buttonAdd.setOnClickListener(view -> {
+            String task = editTextTask.getText().toString();
+
+            if (!task.isEmpty() && !selectedDate.isEmpty()) {
+                itemList.add(new TodoItem(task, selectedDate));
+                adapter.notifyDataSetChanged();
+                editTextTask.setText("");
+                textViewDate.setText("");
+                selectedDate = "";
+            } else {
+                Toast.makeText(MainActivity.this, "할 일과 날짜를 입력해주세요", Toast.LENGTH_SHORT).show();
             }
         });
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-    }
-
-    public void addTask(View view) {
-        String task = inputTask.getText().toString().trim();
-        if (task.isEmpty()) {
-            Toast.makeText(this, "할 일을 입력하세요!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        taskList.add(task);
-        adapter.notifyItemInserted(taskList.size() - 1);
-        inputTask.setText("");
     }
 }
