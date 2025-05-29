@@ -29,10 +29,6 @@ app/
 │ └── values/
 │ └── strings.xml
 
-xml
-복사
-편집
-
 ## 레이아웃 설명 (`activity_main.xml`)
 
 ```xml
@@ -56,6 +52,6 @@ LinearLayout 배경색은 초록색(#48c34a)
 
 버튼 1개 텍스트는 "버튼"
 
-기여
+##기여
 이 프로젝트는 안드로이드 UI 및 EdgeToEdge 기능 학습용 예제입니다.
 필요에 따라 자유롭게 수정 및 확장 가능합니다.
