@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="평균 수면 시간: 0시간"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- BarChart 영역 -->
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chartContainer"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <!-- 추천 문구 텍스트 -->
+    <TextView
+        android:id="@+id/textRecommendation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="추천 문구 표시"
+        android:paddingTop="16dp"
+        android:textSize="16sp" />
+
+</LinearLayout>
